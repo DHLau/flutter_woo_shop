@@ -20,7 +20,7 @@ class CartIndexPage extends GetView<CartIndexController> {
       id: "cart_index",
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("cart_index")),
+          appBar: AppBar(title: const Text("Cart")),
           body: SafeArea(
             child: _buildView(),
           ),

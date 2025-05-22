@@ -47,7 +47,9 @@ class _MainViewGetX extends GetView<MainController> {
         return true;
       },
       child: Scaffold(
-        extendBody: true,
+        // 不拓展底部, 内容显示在bar上方
+        extendBody: false,
+        // 隐藏键盘
         resizeToAvoidBottomInset: false,
         // 导航栏
         bottomNavigationBar: GetBuilder<MainController>(

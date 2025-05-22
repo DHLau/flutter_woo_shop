@@ -57,6 +57,31 @@ class HomeController extends GetxController {
   // 页尺寸
   final int _limit = 20;
 
+  void onTap() {}
+
+  @override
+  void onInit() {
+    super.onInit();
+    _loadCacheData();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    _initData();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+
+    /// 刷新控制器释放
+    refreshController.dispose();
+  }
+}
+
+/// 初始化数据
+extension HomeControllerInitData on HomeController {
   _loadCacheData() {
     var stringBanner = Storage().getString(Constants.storageHomeBanner);
     var stringCategories = Storage().getString(Constants.storageHomeCategories);
@@ -95,11 +120,6 @@ class HomeController extends GetxController {
   }
 
   Future<void> _initData() async {
-    var stringBanner = Storage().getString(Constants.storageHomeBanner);
-    var stringCategories = Storage().getString(Constants.storageHomeCategories);
-    var stringFlashSell = Storage().getString(Constants.storageHomeFlashSell);
-    var stringNewSell = Storage().getString(Constants.storageHomeNewSell);
-
     // 原版这里是串行, 但我觉得没必要, 直接并行
     // 首页数据
     final futures = await Future.wait([
@@ -157,26 +177,72 @@ class HomeController extends GetxController {
 
     update(["home"]);
   }
+}
 
-  void onTap() {}
+/// 刷新扩展
+extension HomeControllerRefreshExt on HomeController {
+  /// 拉取数据
+  /// isRefresh 是否刷新
+  Future<bool> _loadNewSell(bool isRefresh) async {
+    // 拉取数据
+    var result = await ProductApi.products(ProductsReq(
+      page: _page,
+      prePage: _limit,
+    ));
 
-  @override
-  void onInit() {
-    super.onInit();
-    _loadCacheData();
+    // 下拉刷新
+    if (isRefresh) {
+      _page = 1; // 重置页码
+      newProductProductList.clear(); // 清空数据
+    }
+
+    // 有数据
+    if (result.isNotEmpty) {
+      // 页数+1
+      _page++;
+
+      // 添加数据
+      newProductProductList.addAll(result);
+    }
+
+    // 是否空
+    return result.isEmpty;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-    _initData();
+  /// 上拉加载入新商品
+  void onLoading() async {
+    if (newProductProductList.isNotEmpty) {
+      try {
+        // 拉取数据是否为空
+        var isEmpty = await _loadNewSell(false);
+
+        if (isEmpty) {
+          // 设置无数据
+          refreshController.loadNoData();
+        } else {
+          // 加载完成
+          refreshController.loadComplete();
+        }
+      } catch (e) {
+        /// 加载失败
+        refreshController.loadFailed();
+      }
+    } else {
+      // 设置无数据
+      refreshController.loadNoData();
+    }
+    // update(["home_new_sell"]);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-
-    /// 刷新控制器释放
-    refreshController.dispose();
+  /// 下拉刷新
+  void onRefresh() async {
+    try {
+      // 拉取数据是否为空
+      await _loadNewSell(true);
+      refreshController.refreshCompleted();
+    } catch (error) {
+      refreshController.refreshFailed();
+    }
+    update(["home_new_sell"]);
   }
 }

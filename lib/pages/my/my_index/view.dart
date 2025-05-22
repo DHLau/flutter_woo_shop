@@ -20,7 +20,7 @@ class MyIndexPage extends GetView<MyIndexController> {
       id: "my_index",
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("my_index")),
+          appBar: AppBar(title: const Text("Profile")),
           body: SafeArea(
             child: _buildView(),
           ),

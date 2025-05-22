@@ -59,6 +59,7 @@ class BuildNavigation extends StatelessWidget {
       );
     }
     return BottomAppBar(
+      height: kBottomNavigationBarHeight,
       color: AppColors.surface,
       elevation: 0,
       child: ws.toRow(

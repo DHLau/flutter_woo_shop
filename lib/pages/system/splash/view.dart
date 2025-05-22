@@ -21,12 +21,7 @@ class SplashPage extends GetView<SplashController> {
       init: SplashController(),
       id: "splash",
       builder: (_) {
-        return Scaffold(
-          appBar: AppBar(title: const Text("splash")),
-          body: SafeArea(
-            child: _buildView(),
-          ),
-        );
+        return _buildView();
       },
     );
   }
