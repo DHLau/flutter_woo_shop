@@ -1,9 +1,7 @@
-library pages;
-
-// export './xxxx.dart';
 export 'cart/cart_index/index.dart';
 export 'goods/category/index.dart';
 export 'goods/home/index.dart';
+export 'goods/home/widgets/index.dart';
 export 'goods/product_details/index.dart';
 export 'goods/product_list/index.dart';
 export 'msg/msg_index/index.dart';

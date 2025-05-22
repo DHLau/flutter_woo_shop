@@ -25,8 +25,16 @@ class RoutePages {
       page: () => const HomePage(),
     ),
     GetPage(
+      name: RouteNames.goodsCategory,
+      page: () => const CategoryPage(),
+    ),
+    GetPage(
       name: RouteNames.goodsProductDetails,
       page: () => const ProductDetailsPage(),
+    ),
+    GetPage(
+      name: RouteNames.goodsProductList,
+      page: () => const ProductListPage(),
     ),
     GetPage(
       name: RouteNames.msgMsgIndex,
@@ -35,6 +43,10 @@ class RoutePages {
     GetPage(
       name: RouteNames.myMyIndex,
       page: () => const MyIndexPage(),
+    ),
+    GetPage(
+      name: RouteNames.searchSearchIndex,
+      page: () => const SearchIndexPage(),
     ),
     GetPage(
       name: RouteNames.systemLogin,
