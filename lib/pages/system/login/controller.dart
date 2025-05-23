@@ -18,6 +18,14 @@ class LoginController extends GetxController {
 
   void inputChange(String value) {
     _phoneValue.value = value;
+    update(["loginbtn"]);
+  }
+
+  bool get canCommit {
+    if (agreeStatus == false || phoneValue.length != 11) {
+      return false;
+    }
+    return true;
   }
 
   void loginBtnClick() {
@@ -38,6 +46,7 @@ class LoginController extends GetxController {
   void agreeClick() {
     _agreeStatus.value = !_agreeStatus.value;
     update(["agree"]);
+    update(["loginbtn"]);
   }
 
   // _initData() {}

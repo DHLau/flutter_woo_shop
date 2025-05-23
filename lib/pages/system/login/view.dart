@@ -90,7 +90,9 @@ class LoginPage extends GetView<LoginController> {
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.primary,
+                  color: controller.canCommit == true
+                      ? AppColors.primary
+                      : Colors.grey.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(6),
                 )),
           );
