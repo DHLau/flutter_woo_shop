@@ -22,7 +22,7 @@ class LoginPage extends GetView<LoginController> {
     );
   }
 
-  Widget _buildLogin() {
+  Widget _buildRemind() {
     return GetBuilder<LoginController>(
         init: controller,
         id: "agree",
@@ -50,6 +50,21 @@ class LoginPage extends GetView<LoginController> {
             ),
           );
         });
+  }
+
+  Widget _buildSep() {
+    return GetBuilder<LoginController>(
+      init: controller,
+      id: "loginbtn",
+      builder: (_) {
+        return Container(
+          margin: const EdgeInsets.only(left: 16),
+          width: double.infinity,
+          height: 0.5,
+          color: AppColors.outline,
+        );
+      },
+    );
   }
 
   Widget _buildLoginBtn() {
@@ -80,37 +95,6 @@ class LoginPage extends GetView<LoginController> {
                 )),
           );
         });
-  }
-
-  Widget _buildSep() {
-    return GetBuilder<LoginController>(
-      init: controller,
-      id: "loginbtn",
-      builder: (_) {
-        return Container(
-          margin: const EdgeInsets.only(left: 16),
-          width: double.infinity,
-          height: 0.5,
-          color: AppColors.outline,
-        );
-      },
-    );
-  }
-
-  // 主视图
-  Widget _buildView() {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        _buildTitle(),
-        _buildInput(),
-        _buildSep(),
-        _buildHint(),
-        _buildLogin(),
-        _buildLoginBtn(),
-      ],
-    ));
   }
 
   Widget _buildInput() {
@@ -168,6 +152,22 @@ class LoginPage extends GetView<LoginController> {
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
           textAlign: TextAlign.left,
         ));
+  }
+
+  // 主视图
+  Widget _buildView() {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        _buildTitle(),
+        _buildInput(),
+        _buildSep(),
+        _buildHint(),
+        _buildRemind(),
+        _buildLoginBtn(),
+      ],
+    ));
   }
 
   @override

@@ -30,6 +30,7 @@ class LoginController extends GetxController {
       Get.snackbar("提示", "请输入正确的手机号码");
       return;
     }
+
     // 跳转到首页
     Get.offAllNamed(RouteNames.systemMain);
   }
