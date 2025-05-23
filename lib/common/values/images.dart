@@ -1,5 +1,8 @@
 /// 图片 assets
 class AssetsImages {
+  static const checkboxPng = 'assets/images/3.0x/checkbox.png';
+  static const uncheckboxPng = 'assets/images/3.0x/uncheckbox.png';
+  static const caretDownSmallPng = 'assets/images/caret-down-small.png';
   static const defaultPng = 'assets/images/default.png';
   static const homePlaceholderPng = 'assets/images/home_placeholder.png';
   static const logoPng = 'assets/images/logo.png';

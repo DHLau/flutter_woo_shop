@@ -1,0 +1,2 @@
+static const checkboxSvg = 'assets/images/3.0x/checkbox.svg';
+static const uncheckboxSvg = 'assets/images/3.0x/uncheckbox.svg';
