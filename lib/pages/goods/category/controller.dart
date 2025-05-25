@@ -13,6 +13,19 @@ class CategoryController extends GetxController {
   // 分类数据
   List<CategoryModel> categoryItems = [];
 
+  // 列表
+  List<ProductModel> items = [];
+
+  // 页码
+  int _page = 1;
+
+  // 页尺寸
+  final int _limit = 20;
+
+  final RefreshController refreshController = RefreshController(
+    initialRefresh: true, // 一开始就会自动下拉刷新
+  );
+
   _initData() async {
     // 读取缓存
     var stringCategories =
@@ -33,26 +46,36 @@ class CategoryController extends GetxController {
 
   void onTap() {}
 
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  // }
+
+  @override
+  void onReady() {
+    super.onReady();
+    _initData();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    refreshController.dispose();
+  }
+}
+
+// Action
+extension CategoryControllerActionExtension on CategoryController {
   // 分类点击事件
   void onCategoryTap(int id) async {
     categoryId = id;
     // 刷新数据
     refreshController.requestRefresh();
   }
+}
 
-  // 列表
-  List<ProductModel> items = [];
-
-  // 页码
-  int _page = 1;
-
-  // 页尺寸
-  final int _limit = 20;
-
-  final RefreshController refreshController = RefreshController(
-    initialRefresh: true, // 一开始就会自动下拉刷新
-  );
-
+// loadData + refresh
+extension CategoryControllerRefreshExtension on CategoryController {
   // 加载数据
   // 拉数据
   Future<bool> _loadSearch(bool isRefresh) async {
@@ -114,22 +137,5 @@ class CategoryController extends GetxController {
       refreshController.refreshFailed();
     }
     update(["product_list"]);
-  }
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
-
-  @override
-  void onReady() {
-    super.onReady();
-    _initData();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    refreshController.dispose();
   }
 }
