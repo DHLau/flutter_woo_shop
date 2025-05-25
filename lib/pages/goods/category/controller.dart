@@ -27,21 +27,21 @@ class CategoryController extends GetxController {
   );
 
   _initData() async {
-    // 读取缓存
+    // 读缓存
     var stringCategories =
         Storage().getString(Constants.storageProductCategories);
     categoryItems = stringCategories != ""
         ? jsonDecode(stringCategories).map<CategoryModel>((item) {
             return CategoryModel.fromJson(item);
-          }).tolist()
+          }).toList()
         : [];
 
-    // 如果缓存为空, 从网络后驱
+    // 缓存为空，从网络获取
     if (categoryItems.isEmpty) {
       // 获取分类数据
       categoryItems = await ProductApi.categories();
     }
-    update(["category"]);
+    update(["left_nav"]);
   }
 
   void onTap() {}
