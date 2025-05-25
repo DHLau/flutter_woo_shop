@@ -46,8 +46,33 @@ class CategoryPage extends GetView<CategoryController> {
   Widget _buildRightList() {
     return GetBuilder<CategoryController>(
       id: "product_list",
-      builder: (_) {
-        return Container();
+      builder: (controller) {
+        return SmartRefresher(
+                controller: controller.refreshController,
+                enablePullUp: true,
+                onRefresh: controller.onRefresh,
+                onLoading: controller.onLoading,
+                footer: const SmartRefresherFooterWidget(),
+                child: controller.items.isEmpty
+                    ? const PlaceholdWidget()
+                    : GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: AppSpace.listRow.w, // 主轴间距
+                          crossAxisSpacing: AppSpace.listItem.w, // 交叉轴间距
+                          crossAxisCount: 2, // 每行的数量
+                          childAspectRatio: 0.8, // 宽高比
+                        ),
+                        itemBuilder: (context, index) {
+                          var product = controller.items[index]; // 商品项数
+                          // 商品项组件
+                          return ProductItemWidget(
+                            product, // 商品
+                            imgHeight: 117.w, // 图片高度
+                          );
+                        },
+                        itemCount: controller.items.length, // 商品数量
+                      ))
+            .paddingHorizontal(AppSpace.listView);
       },
     );
   }

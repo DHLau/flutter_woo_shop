@@ -71,6 +71,7 @@ extension CategoryControllerActionExtension on CategoryController {
     categoryId = id;
     // 刷新数据
     refreshController.requestRefresh();
+    update(["left_nav"]);
   }
 }
 
