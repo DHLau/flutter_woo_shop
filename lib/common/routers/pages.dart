@@ -17,6 +17,10 @@ class RoutePages {
       binding: MainBinding(),
     ),
     GetPage(
+      name: RouteNames.videosUpload,
+      page: () => const UploadPage(),
+    ),
+    GetPage(
       name: RouteNames.cartCartIndex,
       page: () => const CartIndexPage(),
     ),

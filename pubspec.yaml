@@ -114,6 +114,21 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   # flutter_launcher_icons: ^0.14.1
 
+  # HTTP服务器，用于创建本地文件上传服务
+  shelf: ^1.4.1
+  # 视频播放器
+  video_player: ^2.7.2
+  # 文件路径管理
+  path_provider: ^2.1.1
+  # 权限处理
+  permission_handler: ^10.4.5
+  # 网络信息
+  network_info_plus: ^4.1.0
+  shelf_router: ^1.1.0
+  mime: ^1.0.4
+  http_parser: ^4.0.2
+  
+
   # flutter pub add dio_cookie_manager
   # 文档地址：https://pub.dev/packages/dio_cookie_manager
   # flutter pub add cookie_jar

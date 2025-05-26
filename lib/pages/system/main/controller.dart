@@ -27,6 +27,11 @@ class MainController extends GetxController {
     // }
   }
 
+  // 跳转到视频页面
+  void onJumpToVideo() {
+    Get.toNamed(RouteNames.videosUpload);
+  }
+
   _initData() async {
     // 读取用户 profile 信息
     await UserService.to.getProfile();

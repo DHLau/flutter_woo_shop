@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSLocalNetworkUsageDescription</key>
+    <string>需要访问本地网络以启用WiFi文件传输功能</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>需要访问相册以保存视频文件</string>
 </dict>
 </plist>

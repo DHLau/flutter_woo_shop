@@ -1,53 +1,5 @@
 
       GetPage(
-        name: RouteNames.cartCartIndex,
-        page: () => const CartIndexPage(),
-      ),
-      GetPage(
-        name: RouteNames.goodsCategory,
-        page: () => const CategoryPage(),
-      ),
-      GetPage(
-        name: RouteNames.goodsHome,
-        page: () => const HomePage(),
-      ),
-      GetPage(
-        name: RouteNames.goodsHomeWidgets,
-        page: () => const WidgetsPage(),
-      ),
-      GetPage(
-        name: RouteNames.goodsProductDetails,
-        page: () => const ProductDetailsPage(),
-      ),
-      GetPage(
-        name: RouteNames.goodsProductList,
-        page: () => const ProductListPage(),
-      ),
-      GetPage(
-        name: RouteNames.msgMsgIndex,
-        page: () => const MsgIndexPage(),
-      ),
-      GetPage(
-        name: RouteNames.myMyIndex,
-        page: () => const MyIndexPage(),
-      ),
-      GetPage(
-        name: RouteNames.searchSearchIndex,
-        page: () => const SearchIndexPage(),
-      ),
-      GetPage(
-        name: RouteNames.systemLogin,
-        page: () => const LoginPage(),
-      ),
-      GetPage(
-        name: RouteNames.systemMain,
-        page: () => const MainPage(),
-      ),
-      GetPage(
-        name: RouteNames.systemSplash,
-        page: () => const SplashPage(),
-      ),
-      GetPage(
-        name: RouteNames.systemWelcome,
-        page: () => const WelcomePage(),
+        name: RouteNames.videosUpload,
+        page: () => const UploadPage(),
       ),
