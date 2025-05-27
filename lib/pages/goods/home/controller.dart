@@ -120,31 +120,19 @@ extension HomeControllerInitData on HomeController {
   }
 
   Future<void> _initData() async {
-    // 首页数据
+    // 首页
     // Banner
-    final banners = await SystemApi.banners();
+    bannerItems = await SystemApi.banners();
 
     // 分类
-    final categories = await ProductApi.categories();
+    categoryItems = await ProductApi.categories();
 
     // 推荐商品
-    final featuredProducts =
+    flashSellProductList =
         await ProductApi.products(ProductsReq(featured: true));
 
     // 最新商品
-    final latestProducts = await ProductApi.products(ProductsReq());
-
-    final results = [
-      banners,
-      categories,
-      featuredProducts,
-      latestProducts,
-    ];
-    // 将结果分别赋值给对应变量
-    bannerItems = results[0] as List<KeyValueModel>;
-    categoryItems = results[1] as List<CategoryModel>;
-    flashSellProductList = results[2] as List<ProductModel>;
-    newProductProductList = results[3] as List<ProductModel>;
+    newProductProductList = await ProductApi.products(ProductsReq());
 
     // 颜色
     var attributeColors = await ProductApi.attributes(1);
