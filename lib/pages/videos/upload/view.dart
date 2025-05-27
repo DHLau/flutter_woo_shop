@@ -8,13 +8,13 @@ class UploadPage extends GetView<UploadController> {
 
   // 主视图
   Widget _buildView() {
-    return controller.uploadedFileList.isEmpty
+    return controller.uploadedFiles.isEmpty
         ? const Center(child: Text("暂时没有上传文件"))
         : ListView.builder(
             padding: const EdgeInsets.all(12),
-            itemCount: controller.uploadedFileList.length,
+            itemCount: controller.uploadedFiles.length,
             itemBuilder: (context, index) {
-              final file = controller.uploadedFileList[index];
+              final file = controller.uploadedFiles[index];
               return Card(
                 child: ListTile(
                   leading: const Icon(Icons.insert_drive_file),
