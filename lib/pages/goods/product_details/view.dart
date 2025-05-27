@@ -184,6 +184,7 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
     return controller.product == null
         ? const SizedBox.shrink() // 占位图
         : Container(
+            height: 100.h,
             padding:
                 EdgeInsets.fromLTRB(0, AppSpace.listRow, 0, AppSpace.listRow),
             color: Colors.white,
@@ -228,7 +229,7 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
           body: SafeArea(
             child: <Widget>[
               // 主视图
-              _buildView(),
+              _buildView().paddingBottom(100.h),
 
               // 底部按钮
               if (controller.product != null)
