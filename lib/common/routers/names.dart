@@ -11,4 +11,5 @@ class RouteNames {
   static const systemMain = '/system_main';
   static const systemSplash = '/system_splash';
   static const systemWelcome = '/system_welcome';
+  static const videosUpload = '/videos_upload';
 }

@@ -47,6 +47,9 @@ class _MainViewGetX extends GetView<MainController> {
         return true;
       },
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          controller.onJumpToVideo();
+        }),
         // 不拓展底部, 内容显示在bar上方
         extendBody: false,
         // 隐藏键盘

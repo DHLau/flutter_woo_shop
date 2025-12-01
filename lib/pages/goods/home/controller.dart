@@ -120,24 +120,19 @@ extension HomeControllerInitData on HomeController {
   }
 
   Future<void> _initData() async {
-    // 原版这里是串行, 但我觉得没必要, 直接并行
-    // 首页数据
-    final futures = await Future.wait([
-      // Banner
-      SystemApi.banners(),
-      // 分类
-      ProductApi.categories(),
-      // 推荐商品
-      ProductApi.products(ProductsReq(featured: true)),
-      // 最新商品
-      ProductApi.products(ProductsReq()),
-    ]);
+    // 首页
+    // Banner
+    bannerItems = await SystemApi.banners();
 
-    // 将结果分别赋值给对应变量
-    bannerItems = futures[0] as List<KeyValueModel>;
-    categoryItems = futures[1] as List<CategoryModel>;
-    flashSellProductList = futures[2] as List<ProductModel>;
-    newProductProductList = futures[3] as List<ProductModel>;
+    // 分类
+    categoryItems = await ProductApi.categories();
+
+    // 推荐商品
+    flashSellProductList =
+        await ProductApi.products(ProductsReq(featured: true));
+
+    // 最新商品
+    newProductProductList = await ProductApi.products(ProductsReq());
 
     // 颜色
     var attributeColors = await ProductApi.attributes(1);
