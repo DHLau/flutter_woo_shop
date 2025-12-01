@@ -11,7 +11,8 @@ class CartService extends GetxService {
   /// 加入商品
   void addCart(LineItem item) {
     // 检查是否存在
-    int index = lineItems.indexWhere((element) => element.productId == item.productId);
+    int index =
+        lineItems.indexWhere((element) => element.productId == item.productId);
     if (index >= 0) {
       // 存在，更新数量
       item = lineItems.elementAt(index);
@@ -41,7 +42,8 @@ class CartService extends GetxService {
     }
 
     // 设置商品数量
-    LineItem item = lineItems.firstWhere((element) => element.productId == productId);
+    LineItem item =
+        lineItems.firstWhere((element) => element.productId == productId);
     item.quantity = quantity;
     item.price = double.parse(item.product!.price ?? "0");
     item.total = '${item.price! * item.quantity!}';
@@ -65,5 +67,5 @@ class CartService extends GetxService {
   double get totalItemsPrice =>
       lineItems.fold<double>(0, (double previousValue, LineItem element) {
         return previousValue + double.parse(element.total ?? "0");
-  });
+      });
 }

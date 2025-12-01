@@ -97,7 +97,7 @@ dependencies:
   # 图片浏览器
   # 文档地址：https://pub.dev/packages/photo_view
   photo_view: ^0.15.0
-  intl: ^0.19.0
+  intl: ^0.20.2
 
   # 下拉复选框
   # 文档地址：https://pub.dev/packages/dropdown_button2
