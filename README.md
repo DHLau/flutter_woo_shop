@@ -1,6 +1,6 @@
 # woo_shop
 
-A new Flutter project.
+A new Flutter project Template.
 
 ## Getting Started
 
